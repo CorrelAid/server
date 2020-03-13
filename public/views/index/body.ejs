@@ -13,6 +13,8 @@
                             </li>
                             <li class="ui-history"><a href="#"><%= __('All Notes') %></a>
                             </li>
+                            <li class="ui-allnotes"<% if(!signin) { %> style="display:none;"<% } %>><a href="<%- serverURL %>/allnotes"><%= __('All Notes') %></a>
+                            </li>
                             <div class="ui-signin" style="float: right; margin-top: 8px;<% if(signin) { %> display: none;<% } %>">
                                 <% if (allowAnonymous) { %>
                                 <a type="button" href="<%- serverURL %>/new" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> <%= __('New guest note') %></a>
