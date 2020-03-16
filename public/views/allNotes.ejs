@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include ./build/cover-header %>
+</head>
+
+<body>
+    <h1>Overview over all pads!</h1>
+    <% notes.forEach(function(note) { %>
+        <li><%= note %></li>
+    <% }); %>
+</body>
+
+</html>
+
