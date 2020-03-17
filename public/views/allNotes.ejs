@@ -6,9 +6,16 @@
 </head>
 
 <body>
+
+    
     <h1>Overview over all pads!</h1>
+
     <% notes.forEach(function(note) { %>
-        <li><%= note %></li>
+        <li>
+            <a href=<%= note.noteId %>>
+                <%= note.title %>
+            </a>
+        </li>
     <% }); %>
 </body>
 
