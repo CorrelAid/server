@@ -6,17 +6,18 @@
 </head>
 
 <body>
-
-    
-    <h1>Overview over all pads!</h1>
-
-    <% notes.forEach(function(note) { %>
-        <li>
-            <a href=<%= note.noteId %>>
-                <%= note.title %>
-            </a>
-        </li>
+    <% Object.entries(notesSortedByTag).forEach(function(entryArray) { %>
+        <h2><%= entryArray[0] %></h2>
+        <% entryArray[1].forEach(function(note) { %>
+            <li>
+                <a href=<%= note.noteId %>>
+                    <%= note.title %>
+                </a>
+            </li>
+        <% }); %>
     <% }); %>
+    
+
 </body>
 
 </html>
