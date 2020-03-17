@@ -82,6 +82,7 @@ function pageInit () {
       $('.ui-signin').show()
       $('.ui-or').show()
       $('.ui-welcome').hide()
+      $('.ui-allnotes').hide()
       $('.ui-avatar').prop('src', '').hide()
       $('.ui-name').html('')
       $('.ui-signout').hide()

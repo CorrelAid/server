@@ -2,23 +2,18 @@
 <html lang="en">
 
 <head>
-    <%- include ./build/cover-header %>
+    <%- include ./index/head %>
 </head>
 
 <body>
-    <% Object.entries(notesSortedByTag).forEach(function(entryArray) { %>
-        <h2><%= entryArray[0] %></h2>
-        <% entryArray[1].forEach(function(note) { %>
-            <li>
-                <a href=<%= note.noteId %>>
-                    <%= note.title %>
-                </a>
-            </li>
-        <% }); %>
-    <% }); %>
-    
-
+    <div class="site-wrapper">
+        <div class="site-wrapper-inner">
+            <div class="cover-container">
+                <%- include ./index/header %>
+                <%- include allNotes/body %>          
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
-
