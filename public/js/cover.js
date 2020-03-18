@@ -23,6 +23,11 @@ import {
   saveStorageHistoryToServer
 } from './history'
 
+import {
+  getAllNotes,
+  parseServerToAllNotes
+} from './allNotes'
+
 import { saveAs } from 'file-saver'
 import List from 'list.js'
 import S from 'string'
@@ -58,7 +63,21 @@ const options = {
     outerWindow: 1
   }]
 }
+
 const historyList = new List('history', options)
+
+const optionsAllNotes = {
+  valueNames: ['id', 'text', 'timestamp', 'fromNow', 'time', 'tags', 'pinned'],
+  item: `<li class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+    hallo
+  </li>`,
+  page: 18,
+  pagination: [{
+    outerWindow: 1
+  }]
+}
+
+const allNotesList = new List('allnotes', optionsAllNotes)
 
 window.migrateHistoryFromTempCallback = pageInit
 setloginStateChangeEvent(pageInit)
@@ -77,6 +96,7 @@ function pageInit () {
       $('.ui-signout').show()
       $('.ui-history').click()
       parseServerToHistory(historyList, parseHistoryCallback)
+      //parseServerToAllNotes(allNotesList, parseAllNotesCallback)
     },
     () => {
       $('.ui-signin').show()
@@ -103,6 +123,7 @@ $('a[href="#"]').click(function (e) {
 
 $('.ui-home').click(function (e) {
   if (!$('#home').is(':visible')) {
+    console.log('click home!')
     $('.section:visible').hide()
     $('#home').fadeIn()
   }
@@ -110,8 +131,18 @@ $('.ui-home').click(function (e) {
 
 $('.ui-history').click(() => {
   if (!$('#history').is(':visible')) {
+    console.log('click history!')
     $('.section:visible').hide()
     $('#history').fadeIn()
+    $('.ui-allnotes h2').text('foo')
+  }
+})
+
+$('.ui-allnotes').click(() => {
+  if (!$('#allnotes').is(':visible')) {
+    console.log('click allnotes!')
+    $('.section:visible').hide()
+    $('#allnotes').fadeIn()
   }
 })
 
@@ -130,7 +161,10 @@ function checkHistoryList () {
     })
   }
 }
+function parseAllNotesCallback (list, allNotesSortedByTag) {
+  // checkAllNotesList()
 
+}
 function parseHistoryCallback (list, notehistory) {
   checkHistoryList()
   // sort by pinned then timestamp
