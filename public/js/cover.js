@@ -329,7 +329,6 @@ $('.ui-open-history').bind('change', e => {
   const reader = new FileReader()
   reader.onload = () => {
     const notehistory = JSON.parse(reader.result)
-    // console.log(notehistory);
     if (!reader.result) return
     getHistory(data => {
       let mergedata = data.concat(notehistory)

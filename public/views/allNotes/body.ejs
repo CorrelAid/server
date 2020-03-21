@@ -1,10 +1,7 @@
-
-<div class="section">
-
+<div class="section">    
     <% Object.keys(notesSortedByTag).sort().forEach(function(tag) { %>
-        <h2><%= tag %></h2>
+        <h1><%= tag %></h2>
         <ul id="history-list" class="list">
-            
             <% notesSortedByTag[tag].forEach(function(note) { %>
 
                 <li class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
@@ -14,10 +11,9 @@
                         <div class="content">
                             <h4 class="text"><%= note.title %></h4>
                             <p>
-                            <i><i class="fa fa-clock-o"></i> created </i><i class="fromNow"></i>
+                            <i><i class="fa fa-plus" aria-hidden="true"></i> added </i><i class="fromNow"><%= note.createdAt %></i>
                             <br>
-                            <i class="timestamp" style="display:none;"></i>
-                            <i class="time"></i>
+                            <i><i class="fa fa-pencil-square-o" aria-hidden="true"></i> last edit: </i><i class="fromNow"><%= note.lastchangeAt %></i></i>
                             </p>
                             <p class="tags">
                                 <% note.tags.forEach(tag => { %>
