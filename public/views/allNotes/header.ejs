@@ -3,26 +3,18 @@
         <h3 class="masthead-brand"></h3>
         <nav>
             <ul class="nav masthead-nav">
-                <li class="ui-home<% if(!signin) { %> active<% } %>"><a href="#"><%= __('Intro') %></a>
+                <li class="ui-home"><a href="#"><%= __('Intro') %></a>
                 </li>
-                <li class="ui-history<% if(signin) { %> active<% } %>"><a href="#"><%= __('History') %></a>
+                <li class="ui-history"><a href="#"><%= __('History') %></a>
                 </li>
-                <li class="ui-allnotes"><a href="<%- serverURL %>/all"><%= __('All') %></a>
+                <li class="ui-allnotes<% { %> active<% }%>"><a href="<%- serverURL %>/all"><%= __('All') %></a>
                 </li>
 
-                <div class="ui-signin" style="float: right; margin-top: 8px;<% if(signin) { %> display: none;<% } %>">
-                    <% if (allowAnonymous) { %>
-                    <a type="button" href="<%- serverURL %>/new" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> <%= __('New guest note') %></a>
-                    <% } %>
-                    <% if (authProviders.facebook || authProviders.twitter || authProviders.github || authProviders.gitlab || authProviders.mattermost || authProviders.dropbox || authProviders.google || authProviders.ldap || authProviders.saml || authProviders.oauth2 || authProviders.email) { %>
-                    <button class="btn btn-sm btn-success ui-signin" data-toggle="modal" data-target=".signin-modal"><%= __('Sign In') %></button>
-                    <% } %>
-                </div>
                 <div class="ui-signout" style="float: right; margin-top: 8px;<% if(!signin) { %> display: none;<% } %>">
                     <a type="button" href="<%- serverURL %>/new" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> <%= __('New note') %></a>
                     <span class="ui-profile dropdown pull-right">
                         <button id="profileLabel" class="btn btn-sm btn-link ui-profile-label" style="padding-right: 0;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="ui-avatar" width="20" height="20"><span class="hidden-xs hidden-sm">&ensp;<span class="ui-name"></span></span>&ensp;<i class="fa fa-caret-down"></i>
+                            <img src=<%- photo %> class="ui-avatar" width="20" height="20"><span class="hidden-xs hidden-sm">&ensp;<span class="ui-name"></span><%- name %></span>&ensp;
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="profileLabel">
                             <li><a href="<%- serverURL %>/features"><i class="fa fa-dot-circle-o fa-fw"></i> <%= __('Features') %></a></li>

@@ -82,6 +82,7 @@ function pageInit () {
       $('.ui-signin').show()
       $('.ui-or').show()
       $('.ui-welcome').hide()
+      $('.ui-allnotes').hide()
       $('.ui-avatar').prop('src', '').hide()
       $('.ui-name').html('')
       $('.ui-signout').hide()
@@ -328,7 +329,6 @@ $('.ui-open-history').bind('change', e => {
   const reader = new FileReader()
   reader.onload = () => {
     const notehistory = JSON.parse(reader.result)
-    // console.log(notehistory);
     if (!reader.result) return
     getHistory(data => {
       let mergedata = data.concat(notehistory)
